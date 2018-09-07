@@ -1,0 +1,28 @@
+{% load profile_extras %}
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>New Match</title>
+  </head>
+  <body>
+    <p>We have found the following new match(es) for you:</p>
+    <br/>
+    {% for match in matches %}
+    Score: {{ match.score }} <br/>
+    Username: {{ match.profile2.display_name }} <br/>
+    View details and/or send a message: <br/>
+    <a href="{{ protocol }}://{{ domain }}{% url 'profiles:detail' uid=match.profile2.id|encode_pk %}">
+      {{ protocol }}://{{ domain }}{% url 'profiles:detail' uid=match.profile2.id|encode_pk %}
+    </a> <br/>
+    <br/>
+    {% endfor %}
+    <p>To stop receiving email from us, please login and deactivate your profile.</p>
+    <br/>
+    <br/>
+    <p>
+      Sincerely, <br/>
+      Fire Chickens
+    </p>
+  </body>
+</html>

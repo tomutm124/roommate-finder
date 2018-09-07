@@ -1,0 +1,23 @@
+{% load profile_extras %}
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>New Message</title>
+  </head>
+  <body>
+    <p>You received a new message from a prospective roommate on Fire Chickens!</p>
+    <p>Sender: {{ username }}</p>
+
+    View your messages: <br/>
+    <a href="{{ protocol }}://{{ domain }}{% url 'profiles:received_messages' %}">{{ protocol }}://{{ domain }}{% url 'profiles:received_messages' %}</a> <br/>
+    <br/>
+    <p>To stop receiving email from us, please login and deactivate your profile.</p>
+    <br/>
+    <br/>
+    <p>
+      Sincerely, <br/>
+      Fire Chickens
+    </p>
+  </body>
+</html>

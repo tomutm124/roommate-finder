@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load profile_extras %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="media-container-column col-lg-8">
+    <h3>Message</h3>
+    {% if is_sender %}
+      <p>To
+        <a href="{% url 'profiles:detail' message.receiver.id|encode_pk %}">
+          {{ message.receiver.display_name }}
+        </a>
+        at {{ message.sent_time|show_datetime }}</p>
+    {% else %}
+      <p>From
+        <a href="{% url 'profiles:detail' message.sender.id|encode_pk %}">
+          {{ message.sender.display_name }}
+        </a>
+        at {{ message.sent_time|show_datetime }}</p>
+    {% endif %}
+    <br/>
+    <p><b>Message:</b></p>
+    <p>{{ message.content }}</p>
+
+  </div>
+</div>
+
+{% endblock content %}

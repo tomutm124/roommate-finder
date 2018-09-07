@@ -1,0 +1,282 @@
+<div class="row justify-content-center">
+  <div class="media-container-column col-lg-8">
+
+    <h3>{{ title }}</h3>
+    <br/>
+
+    <p>Please read the instructions and fill in your profile details below. We will use them to find you a match.</p>
+    <h4>Instructions:</h4>
+    <ol>
+      <li>Most of the fields below are optional, you do not need to fill all of them if you do not want to</li>
+      <li>
+        The <b>"Required"</b> checkbox: If you mark a field as "Required", we will only show you profiles that
+        match yours on that field. This can significantly reduce the number of matching profiles you have
+      </li>
+      <li>
+        The <b>Weight</b>:
+        Alternatively, you can
+        leave the "Required" button unchecked and indicate a weight. Any profile that matches yours on that field will get that
+        amount of score. You can then indicate a minimum score. Only profiles with a total score at least that will be shown to you
+      </li>
+      <li>
+        Any match in the <b>Languages</b> you provide is considered as a match on the language field
+      </li>
+      <li>
+        <b>Bedtime</b> means the time you go to bed, not the duration of your sleep. Any overlap in bedtime is considered as a match for that field
+      </li>
+      <li>
+        If you leave a field empty, <b>its weight will not contribute to the total score</b>
+      </li>
+      <li>
+        If you mark a field as required, <b>its weight will not contribute to the total score</b>
+      </li>
+      <li>
+        The <b>Allow Unmatched Users to Contact You</b> checkbox: Some times your profile matches someone else's preferences but their
+        profile does not match yours. Checking this button allows these users to send you a message (we will let you know by email after
+        you get a message). They will be able to see your profile, but not your ITSC
+      </li>
+      <li>
+        We provided some default values of weights for you. Please feel free to change them
+      </li>
+    </ol>
+
+    <h4>Tips:</h4>
+    <p>To maximize your chance to find a match, please try to:</p>
+    <ol>
+      <li>Fill in as many fields as possible</li>
+      <li>Mark fewer (or no) fields as "required"</li>
+      <li>Set a lower "Minimum Total Score" (remember unmatched 9am classes cause score deduction)</li>
+      <li>
+        Check the "Allow Unmatched Users to Contact You" box to give other people a chance to discuss with you.
+        You might make a new friend :)
+      </li>
+
+    </ol>
+
+    <h4>Your Profile</h4>
+    <form class="form" method="post" action="{% if action_url %}{{ action_url }}{% endif %}">
+      {% csrf_token %}
+
+
+      {{ form.non_field_errors }}
+      <div class="form-group">
+          {{ form.display_name.errors }}
+          <label for="{{ form.display_name.id_for_label }}">Display Name (shown to other users)</label>
+          {{ form.display_name }}
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="{{ form.hall.id_for_label }}">Hall</label>
+          {{ form.hall }}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="{{ form.gender.id_for_label }}">Gender</label>
+          {{ form.gender }}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="{{ form.llc.id_for_label }}">LLC</label>
+          {{ form.llc }}
+        </div>
+        <div class="form-group col-md-4">
+          <label for="{{ form.llc_weight.id_for_label }}">Weight</label>
+          {{ form.llc_weight }}
+        </div>
+        <div class="form-group col-md-2">
+          <label for="{{ form.llc_required.id_for_label }}">Required?</label>
+          <div class="form-check">
+            {{ form.llc_required }}
+            <label class="form-check-label" for="{{ form.llc_required.id_for_label }}">Yes</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="{{ form.room_type.id_for_label }}">Room Type</label>
+          {{ form.room_type }}
+        </div>
+        <div class="form-group col-md-4">
+          <label for="{{ form.room_type_weight.id_for_label }}">Weight</label>
+          {{ form.room_type_weight }}
+        </div>
+        <div class="form-group col-md-2">
+          <label for="{{ form.room_type_required.id_for_label }}">Required?</label>
+          <div class="form-check">
+            {{ form.room_type_required }}
+            <label class="form-check-label" for="{{ form.room_type_required.id_for_label }}">Yes</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="{{ form.language1.id_for_label }}">Primary Language</label>
+          {{ form.language1 }}
+        </div>
+        <div class="form-group col-md-4">
+          <label for="{{ form.language2.id_for_label }}">Secondary Language</label>
+          {{ form.language2 }}
+        </div>
+        <div class="form-group col-md-2">
+          <label for="{{ form.language_weight.id_for_label }}">Weight</label>
+          {{ form.language_weight }}
+        </div>
+        <div class="form-group col-md-2">
+          <label for="{{ form.language_required.id_for_label }}">Required?</label>
+          <div class="form-check">
+            {{ form.language_required }}
+            <label class="form-check-label" for="{{ form.language_required.id_for_label }}">Yes</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="{{ form.bedtime_start.id_for_label }}">Earliest Bedtime</label>
+          {{ form.bedtime_start }}
+        </div>
+        <div class="form-group col-md-4">
+          <label for="{{ form.bedtime_end.id_for_label }}">Latest Bedtime</label>
+          {{ form.bedtime_end }}
+        </div>
+        <div class="form-group col-md-2">
+          <label for="{{ form.bedtime_weight.id_for_label }}">Weight</label>
+          {{ form.bedtime_weight }}
+        </div>
+        <div class="form-group col-md-2">
+          <label for="{{ form.bedtime_required.id_for_label }}">Required?</label>
+          <div class="form-check">
+            {{ form.bedtime_required }}
+            <label class="form-check-label" for="{{ form.bedtime_required.id_for_label }}">Yes</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div>
+            <label>9:00am/9:30am class on</label>
+          </div>
+          <div class="form-check form-check-inline">
+            {{ form.nine_am_class_mon }}
+            <label class="form-check-label" for="{{ form.nine_am_class_mon.id_for_label }}">Mon</label>
+          </div>
+          <div class="form-check form-check-inline">
+            {{ form.nine_am_class_tue }}
+            <label class="form-check-label" for="{{ form.nine_am_class_tue.id_for_label }}">Tue</label>
+          </div>
+          <div class="form-check form-check-inline">
+            {{ form.nine_am_class_wed }}
+            <label class="form-check-label" for="{{ form.nine_am_class_wed.id_for_label }}">Wed</label>
+          </div>
+          <div class="form-check form-check-inline">
+            {{ form.nine_am_class_thu }}
+            <label class="form-check-label" for="{{ form.nine_am_class_thu.id_for_label }}">Thu</label>
+          </div>
+          <div class="form-check form-check-inline">
+            {{ form.nine_am_class_fri }}
+            <label class="form-check-label" for="{{ form.nine_am_class_fri.id_for_label }}">Fri</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <label for="{{ form.nine_am_class_penalty.id_for_label }}">Penalty (negative weight) per 9am/9:30am class your roommate has but you don't</label>
+          {{ form.nine_am_class_penalty }}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="{{ form.year.id_for_label }}">Year</label>
+          {{ form.year }}
+        </div>
+        <div class="form-group col-md-4">
+          <label for="{{ form.year_weight.id_for_label }}">Weight</label>
+          {{ form.year_weight }}
+        </div>
+        <div class="form-group col-md-2">
+          <label for="{{ form.year_required.id_for_label }}">Required?</label>
+          <div class="form-check">
+            {{ form.year_required }}
+            <label class="form-check-label" for="{{ form.year_required.id_for_label }}">Yes</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="{{ form.school.id_for_label }}">School</label>
+          {{ form.school }}
+        </div>
+        <div class="form-group col-md-4">
+          <label for="{{ form.school_weight.id_for_label }}">Weight</label>
+          {{ form.school_weight }}
+        </div>
+        <div class="form-group col-md-2">
+          <label for="{{ form.school_required.id_for_label }}">Required?</label>
+          <div class="form-check">
+            {{ form.school_required }}
+            <label class="form-check-label" for="{{ form.school_required.id_for_label }}">Yes</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="{{ form.major.id_for_label }}">Major</label>
+          {{ form.major }}
+        </div>
+        <div class="form-group col-md-4">
+          <label for="{{ form.major_weight.id_for_label }}">Weight</label>
+          {{ form.major_weight }}
+        </div>
+      </div>
+
+      <div class="form-group">
+          {{ form.remarks.errors }}
+          <label for="{{ form.remarks.id_for_label }}">Remarks for Your Prospective Roommates</label>
+          {{ form.remarks }}
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="{{ form.minimum_weight.id_for_label }}">Minimum Total Score</label>
+          {{ form.minimum_weight }}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <div class="form-check">
+            {{ form.allow_non_match_to_contact }}
+            <label class="form-check-label" for="{{ form.allow_non_match_to_contact.id_for_label }}">
+              Allow Unmatched Users to Contact You
+            </label>
+          </div>
+          <span class="help-block">(their profile does not match yours, but yours matches theirs)</span>
+        </div>
+      </div>
+
+      {% if show_inactive_button %}
+      <div class="form-row">
+        <div class="form-group col-md-8">
+          <div class="form-check form-check-inline">
+            {{ form.inactive }}
+            <label class="form-check-label" for="{{ form.inactive.id_for_label }}"><b>Deactivate Profile (Your Profile Will NOT be Matched)</b></label>
+          </div>
+        </div>
+      </div>
+      <p>Note: Please make sure your bedtime is specified (if you want to) before clicking "Update". We are experiencing a problem that bedtime fields are not auto-populated in this update form. We apologize for any inconvenience caused. </p>
+      {% endif %}
+
+      <input class="btn btn-primary" type="submit" value="{{ btn_title }}" />
+    </form>
+
+  </div>
+</div>

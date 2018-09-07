@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="row justify-content-center">
+  <div class="media-container-column col-lg-8">
+
+    <h3>Send a message to {{ display_name }}</h3>
+    <br/>
+
+    <p>We will send an email to the recipient to notify him/her of your message.</p>
+    <p>
+      We strongly recommend you to leave a way of contact (e.g. mobile number, personal email address) in your message to facilitate further communications.
+    </p>
+
+    <form class="form" method="post" action="{% if action_url %}{{ action_url }}{% endif %}">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="form-group">
+          {{ form.content.errors }}
+          {{ form.content }}
+      </div>
+      <input class="btn btn-primary" type="submit" value="Send" />
+    </form>
+
+  </div>
+</div>
+
+{% endblock content %}
+

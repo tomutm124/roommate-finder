@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Register an Account</h2>
+  <br/>
+  <p>
+    An email with your password will be sent to your ITSC email address (ending with @connect.ust.hk).
+    Please check your "Clutter" and "Junk Email" folders if you don't receive the email within 5 minutes.
+    We strongly recommend changing your password after your first login.
+  </p>
+
+  <form class="form" method="post" action="{% if action_url %}{{ action_url }}{% endif %}">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="form-group">
+      {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">ITSC (e.g. tmchanaa): </label>
+      {{ form.username }}
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Register" />
+  </form>
+{% endblock %}

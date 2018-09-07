@@ -1,0 +1,8 @@
+db.sqlite3
+*.pyc
+.DS_Store
+roomies/secrets.py
+
+# this is temporary since we will use a new DB in prod
+# if we change the models after prod goes live, we need to commit those migrations and apply to prod
+*/migrations/0*

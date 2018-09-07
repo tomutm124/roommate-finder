@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load profile_extras %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="media-container-column col-lg-8">
+
+    <h3>Your profile</h3>
+    <br/>
+
+    <dl class="row">
+      <dt class="col-sm-4">Display Name</dt>
+      <dd class="col-sm-8">{{ object.display_name }}</dd>
+    </dl>
+
+    {% include "profiles/profile_detail_content.html" with object=object %}
+
+    <dl class="row">
+      <dt class="col-sm-4">Minimum Total Score</dt>
+      <dd class="col-sm-8">{{ object.minimum_weight }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">Allow Unmatched Users to Contact</dt>
+      <dd class="col-sm-8">{{ object.allow_non_match_to_contact|bool_to_yes_no }}</dd>
+    </dl>
+
+    <form action="{% url 'profiles:update' %}">
+      <input class="btn btn-primary" type="submit" value="Update" />
+    </form>
+
+  </div>
+</div>
+
+{% endblock content %}

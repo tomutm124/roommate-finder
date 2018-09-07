@@ -1,0 +1,101 @@
+{% load profile_extras %}
+
+    <dl class="row">
+      <dt class="col-sm-4">Hall</dt>
+      <dd class="col-sm-2">{{ object.hall }}</dd>
+      <dt class="col-sm-2">Gender</dt>
+      <dd class="col-sm-2">{{ object.gender }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">LLC</dt>
+      <dd class="col-sm-2">{{ object.llc }}</dd>
+      <dt class="col-sm-2">Weight</dt>
+      <dd class="col-sm-1">{{ object.llc_weight }}</dd>
+      <dt class="col-sm-2">Required?</dt>
+      <dd class="col-sm-1">{{ object.llc_required|bool_to_yes_no }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">Room Type</dt>
+      <dd class="col-sm-2">{{ object.room_type }}</dd>
+      <dt class="col-sm-2">Weight</dt>
+      <dd class="col-sm-1">{{ object.room_type_weight }}</dd>
+      <dt class="col-sm-2">Required?</dt>
+      <dd class="col-sm-1">{{ object.room_type_required|bool_to_yes_no }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dd class="col-sm-6">
+        <dl class="row">
+          <dt class="col-sm-8">Primary Language</dt>
+          <dd class="col-sm-4">{{ object.language1 }}</dd>
+          <dt class="col-sm-8">Secondary Language</dt>
+          <dd class="col-sm-4">{{ object.language2 }}</dd>
+        </dl>
+      </dd>
+      <dt class="col-sm-2">Weight</dt>
+      <dd class="col-sm-1">{{ object.language_weight }}</dd>
+      <dt class="col-sm-2">Required?</dt>
+      <dd class="col-sm-1">{{ object.language_required|bool_to_yes_no }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dd class="col-sm-6">
+        <dl class="row">
+          <dt class="col-sm-8">Earliest Bedtime</dt>
+          <dd class="col-sm-4">{{ object.bedtime_start|datetime_to_time }}</dd>
+          <dt class="col-sm-8">Latest Bedtime</dt>
+          <dd class="col-sm-4">{{ object.bedtime_end|datetime_to_time }}</dd>
+        </dl>
+      </dd>
+      <dt class="col-sm-2">Weight</dt>
+      <dd class="col-sm-1">{{ object.bedtime_weight }}</dd>
+      <dt class="col-sm-2">Required?</dt>
+      <dd class="col-sm-1">{{ object.bedtime_required|bool_to_yes_no }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">Days with 9am/9:30am class</dt>
+      <dd class="col-sm-8">{{ object|morning_class_days }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">Penalty per extra 9am/9:30am class</dt>
+      <dd class="col-sm-8">{{ object.nine_am_class_penalty }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">Year</dt>
+      <dd class="col-sm-2">{{ object.year }}</dd>
+      <dt class="col-sm-2">Weight</dt>
+      <dd class="col-sm-1">{{ object.year_weight }}</dd>
+      <dt class="col-sm-2">Required?</dt>
+      <dd class="col-sm-1">{{ object.year_required|bool_to_yes_no }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">School</dt>
+      <dd class="col-sm-2">{{ object.school }}</dd>
+      <dt class="col-sm-2">Weight</dt>
+      <dd class="col-sm-1">{{ object.school_weight }}</dd>
+      <dt class="col-sm-2">Required?</dt>
+      <dd class="col-sm-1">{{ object.school_required|bool_to_yes_no }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">Major</dt>
+      <dd class="col-sm-2">{{ object.major }}</dd>
+      <dt class="col-sm-2">Weight</dt>
+      <dd class="col-sm-1">{{ object.major_weight }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">Remarks</dt>
+      <dd class="col-sm-8">{{ object.remarks }}</dd>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-sm-4">Last Updated on</dt>
+      <dd class="col-sm-8">{{ object.last_updated|show_date }}</dd>
+    </dl>

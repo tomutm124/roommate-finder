@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load profile_extras %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="media-container-column col-lg-8">
+
+    <h3>Your Matches</h3>
+    <br/>
+    {% for object in object_list %}
+
+    <dl class="row">
+      <dt class="col-sm-2">Score</dt>
+      <dd class="col-sm-2">{{ object.score }}</dd>
+      <dt class="col-sm-2">Name</dt>
+      <dd class="col-sm-4">{{ object.profile2.display_name }}</dd>
+      <dd class="col-sm-2"><a href="{% url 'profiles:detail' object.profile2.id|encode_pk %}">Detail</a></dd>
+    </dl>
+
+    <hr/>
+    {% empty %}
+    <p>No match has been found yet. We will send you an email once we found you a match.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
+

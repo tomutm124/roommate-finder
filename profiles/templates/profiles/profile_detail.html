@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="media-container-column col-lg-8">
+
+    <h3>{{ object.display_name }}'s Profile</h3>
+    <br/>
+    <form action="{% url 'profiles:message' uid %}">
+      <input class="btn btn-primary" type="submit" value="Send a Message" />
+    </form>
+    <br/>
+    {% include "profiles/profile_detail_content.html" with object=object %}
+
+    <form action="{% url 'profiles:message' uid %}">
+      <input class="btn btn-primary" type="submit" value="Send a Message" />
+    </form>
+
+  </div>
+</div>
+
+{% endblock content %}

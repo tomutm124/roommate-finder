@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-5">Find a Good Roommate</h1>
+    <p>Fire Chickens is a website for HKUST students to find a roommate that fits your lifestyle.</p>
+    <p>
+      <a class="btn btn-primary btn-lg" href="{% url 'accounts:register' %}" role="button">Register Now &raquo;</a>
+      <a class="btn btn-primary btn-lg" href="{% url 'accounts:login' %}" role="button">Login &raquo;</a>
+    </p>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h3>How it works</h3>
+    <ol>
+      <li>You indicate your roommate preferences</li>
+      <li>We check if another user's preferences match yours</li>
+      <li>If yes, we send you an email with the other user's preferences</li>
+      <li>You can message the other user to discuss in more detail</li>
+    </ol>
+  </div>
+  <div class="col-md-4">
+    <h3>How we try to help</h3>
+    <ol>
+      <li>We match</li>
+      <li>
+        We provide a rudimentary messaging service
+        so you do not need to disclose any contact information (including ITSC)
+        to prospective roommates until you are comfortable with that
+      </li>
+    </ol>
+  </div>
+  <div class="col-md-4">
+    <h3>Join Us</h3>
+    <p>Register now to start looking for a roommate. The more users we have, the more likely you can find a match</p>
+    <p>
+      <a class="btn btn-primary" href="{% url 'accounts:register' %}" role="button">Register &raquo;</a>
+      <a class="btn btn-primary" href="{% url 'accounts:login' %}" role="button">Login &raquo;</a>
+    </p>
+  </div>
+</div>
+
+{% endblock content %}

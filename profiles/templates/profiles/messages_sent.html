@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load profile_extras %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="media-container-column col-lg-8">
+
+    <h3>Messages Sent</h3>
+    <br/>
+    {% for message in messages %}
+
+    <dl class="row">
+      <dt class="col-sm-1">At</dt>
+      <dd class="col-sm-4">{{ message.sent_time|show_datetime }}</dd>
+      <dt class="col-sm-1">To</dt>
+      <dd class="col-sm-3">{{ message.receiver.display_name }}</dd>
+      <dd class="col-sm-3"><a href="{% url 'profiles:message_detail' message.id|encode_pk %}">View Message</a></dd>
+    </dl>
+
+    <hr/>
+    {% empty %}
+    <p>You did not send any message.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
+
