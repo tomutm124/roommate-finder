@@ -28,7 +28,6 @@ The platform provides a rudimentary messaging system so that users do not need t
    1. update DEBUG to False
    2. set CSRF_COOKIE_SECURE to True (uncomment the line near the bottom)
    3. set SESSION_COOKIE_SECURE to True (uncomment the line near the bottom)
-3. Consider disabling the route to admin page
-4. Consider setting up a more prod-ready database and configure the connection in roomies/settings.py
-5. Host static files elsewhere (e.g. Nginx) to reduce server load
+3. Consider setting up a more prod-ready database and configure the connection in roomies/settings.py
+4. Host static files elsewhere (e.g. Nginx) to reduce server load
   
