@@ -1,5 +1,5 @@
 # ust-roomies
-A Django web application for students at HKUST to find roommates with similar lifestyle and routines. This application is a personal project and is not affiliated with HKUST.
+A web application for students at HKUST to find roommates with similar lifestyle and routines. This application is a personal project and is not affiliated with HKUST. Written using Django.
 
 ## Home page
 ![Home Page](./screenshots/home.png)
